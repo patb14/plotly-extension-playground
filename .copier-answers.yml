@@ -1,0 +1,14 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: v4.0.5
+_src_path: https://github.com/jupyterlab/extension-template
+author_email: patrickb_14@hotmail.com
+author_name: Patrick Brownrigg
+has_binder: true
+has_settings: false
+kind: frontend
+labextension_name: plotly-extension
+project_short_description: A JupyterLab extension.
+python_name: plotly_extension
+repository: https://github.com/patb14/plotly-extension-playground
+test: true
+
