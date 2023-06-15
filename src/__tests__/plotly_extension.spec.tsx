@@ -2,13 +2,19 @@
  * Example of [Jest](https://jestjs.io/docs/getting-started) unit tests
  */
 
-import React from 'react'
-import { cleanup, render, screen, fireEvent, within } from "@testing-library/react";
-import ButtonComponent from "../components/ButtonComponent";
-import InputComponent from "../components/InputComponent";
-import DialogBoxComponent from "../components/DialogBoxComponent";
-import { InputDialogBoxWidget } from "../widgets/InputDialogBoxWidget";
-import '@testing-library/jest-dom'
+import React from 'react';
+import {
+  cleanup,
+  render,
+  screen,
+  fireEvent,
+  within
+} from '@testing-library/react';
+import ButtonComponent from '../components/ButtonComponent';
+import InputComponent from '../components/InputComponent';
+import DialogBoxComponent from '../components/DialogBoxComponent';
+import { InputDialogBoxWidget } from '../widgets/InputDialogBoxWidget';
+import '@testing-library/jest-dom';
 
 afterEach(() => {
   cleanup();
@@ -16,25 +22,25 @@ afterEach(() => {
 
 describe('ButtonComponent Tests', () => {
   it('A ButtonComponent should render a button with the given label', () => {
-    render(<ButtonComponent label={"Test"} handleClick={jest.fn()} />);
+    render(<ButtonComponent label={'Test'} handleClick={jest.fn()} />);
 
     const component = screen.getByRole('button');
     expect(component).not.toBeNull();
-    expect(component.textContent).toEqual("Test");
+    expect(component.textContent).toEqual('Test');
   });
 
   it('When a ButtonComponent is clicked, its handleClick should get triggered', () => {
     const mockFn = jest.fn();
-    render(<ButtonComponent label={"Test"} handleClick={mockFn} />);
+    render(<ButtonComponent label={'Test'} handleClick={mockFn} />);
 
-    fireEvent.click(screen.getByText("Test"));
+    fireEvent.click(screen.getByText('Test'));
     expect(mockFn).toHaveBeenCalledTimes(1);
   });
 });
 
 describe('InputComponent Tests', () => {
   it('When a InputComponent is rendered an input field should exist', () => {
-    render(<InputComponent/>);
+    render(<InputComponent />);
 
     expect(screen.getByRole('textbox')).not.toBeNull();
   });
@@ -42,7 +48,7 @@ describe('InputComponent Tests', () => {
 
 describe('DialogBoxComponent Tests', () => {
   beforeEach(() => {
-    render(<DialogBoxComponent children={<button>HELLO</button>}/>);
+    render(<DialogBoxComponent children={<button>HELLO</button>} />);
   });
 
   it('When a DialogBoxComponent is rendered a dialog element should exist', () => {
@@ -60,7 +66,7 @@ describe('InputDialogBoxWidget Tests', () => {
     render(new InputDialogBoxWidget().render());
   });
 
-  it("When a InputDialogBoxWidget is rendered it has the proper components", () => {
+  it('When a InputDialogBoxWidget is rendered it has the proper components', () => {
     const component = screen.getByTestId('input-dialog-box-widget');
     expect(component).not.toBeNull();
 
