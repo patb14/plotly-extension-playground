@@ -1,6 +1,4 @@
 # plotly_extension
-
-[![Github Actions Status](https://github.com/patb14/plotly-extension-playground/workflows/Build/badge.svg)](https://github.com/patb14/plotly-extension-playground/actions/workflows/build.yml)[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/patb14/plotly-extension-playground/main?urlpath=lab)
 A JupyterLab extension.
 
 ## Requirements
