@@ -1,22 +1,14 @@
-# plotly-extension
-A JupyterLab extension.
+### Install
+First start by installing [miniconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html)
 
-## Requirements
+Next, set up a dev env using miniconda and install NodeJS, JupyterLab, Copier, and Git
+https://jupyterlab.readthedocs.io/en/stable/extension/extension_tutorial.html#set-up-a-development-environment
 
-- JupyterLab >= 4.0.0
+Then activate your new environment with the activate command:
+`conda activate env-name`
 
-### Development install
-
-Note: You will need NodeJS to build the extension package.
-
-The `jlpm` command is JupyterLab's pinned version of
-[yarn](https://yarnpkg.com/) that is installed with JupyterLab. You may use
-`yarn` or `npm` in lieu of `jlpm` below.
-
+Next install and build from within your new environment:
 ```bash
-# Clone the repo to your local environment
-# Change directory to the plotly_extension directory
-# Install package in development mode
 pip install -e "."
 # Link your development version of the extension with JupyterLab
 jupyter labextension develop . --overwrite
@@ -50,6 +42,7 @@ This extension is using [Jest](https://jestjs.io/) for JavaScript code testing.
 To execute them, execute:
 
 ```sh
-jlpm
 jlpm test
 ```
+
+This will run Jest unit tests on the components and widgets. No ui-tests are done as that is new to me and I did not have the time to work on them.
