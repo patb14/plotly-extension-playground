@@ -32,7 +32,7 @@ export class InputDialogBoxWidget extends ReactWidget {
 
   render(): JSX.Element {
     return (
-      <div>
+      <div data-testid="input-dialog-box-widget">
         <DialogBoxComponent
           children={
             <div>

@@ -11,7 +11,9 @@ interface IButtonProps {
 const ButtonComponent = ({ label, handleClick }: IButtonProps): JSX.Element => {
   return (
     <div>
-      <button onClick={handleClick}>{label}</button>
+      <button data-testid={'button-component'} onClick={handleClick}>
+        {label}
+      </button>
     </div>
   );
 };

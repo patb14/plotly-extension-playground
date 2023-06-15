@@ -8,7 +8,11 @@ interface IDialogBoxProps {
  * React component for a DialogBox
  */
 const DialogBoxComponent = ({ children }: IDialogBoxProps): JSX.Element => {
-  return <dialog open>{children}</dialog>;
+  return (
+    <dialog open data-testid={'dialog-box-component'}>
+      {children}
+    </dialog>
+  );
 };
 
 export default DialogBoxComponent;

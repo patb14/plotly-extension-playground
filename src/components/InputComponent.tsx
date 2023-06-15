@@ -5,7 +5,7 @@ import React from 'react';
  */
 const InputComponent = (): JSX.Element => {
   return (
-    <div>
+    <div data-testid={'input-component'}>
       <div className={'jp-Dialog-body'}>
         <input type={'text'} id={'dialog-box-input'} required />
       </div>
