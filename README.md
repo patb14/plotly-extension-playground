@@ -1,3 +1,14 @@
+# Notes
+My approach was to make everything as re-usable as possible as if this code were to be expanded upon we would not want
+to have a bunch of repeat code to maintain. I separated each section of the dialog into a react component, and then created
+a widget that combines them all to display a dialog box with an input field and a button.
+
+No ui-tests were done as Jupyter is new to me, and I did not have the time to look into them.
+
+I leveraged the existing CSS classes for dialog boxes that Jupyter has as I felt my time would be better spent working
+on the optional tasks since in the real world I would use something like MUI to get a nice look with minimal CSS.
+
+
 ### Install
 First start by installing [miniconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html)
 
