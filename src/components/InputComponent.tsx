@@ -7,7 +7,7 @@ const InputComponent = (): JSX.Element => {
   return (
     <div data-testid={'input-component'}>
       <div className={'jp-Dialog-body'}>
-        <input type={'text'} id={'dialog-box-input'} required />
+        <input type={'text'} id={'dialog-box-input'} />
       </div>
     </div>
   );

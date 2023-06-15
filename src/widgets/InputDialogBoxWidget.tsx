@@ -15,7 +15,7 @@ export class InputDialogBoxWidget extends ReactWidget {
     this.addClass('jp-ReactWidget');
   }
 
-  onClick() {
+  onClick(): void {
     try {
       const inputField = document.getElementById(
         'dialog-box-input'
