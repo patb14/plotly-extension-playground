@@ -1,10 +1,14 @@
 import React from 'react';
 
+interface IButtonProps {
+  label: string;
+  handleClick: () => void;
+}
+
 /**
  * React component for a button
  */
-// TODO: TYPE
-const ButtonComponent = ({ label, handleClick }: any): JSX.Element => {
+const ButtonComponent = ({ label, handleClick }: IButtonProps): JSX.Element => {
   return (
     <div>
       <button onClick={handleClick}>{label}</button>
