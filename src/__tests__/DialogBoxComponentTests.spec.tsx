@@ -6,11 +6,11 @@ import DialogBoxComponent from '../components/DialogBoxComponent';
 import React from 'react';
 import '@testing-library/jest-dom';
 
-afterEach(() => {
-  cleanup();
-});
-
 describe('DialogBoxComponent Tests', () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   beforeEach(() => {
     render(<DialogBoxComponent children={<button>HELLO</button>} />);
   });

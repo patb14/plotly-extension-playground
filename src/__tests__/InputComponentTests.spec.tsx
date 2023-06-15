@@ -6,11 +6,11 @@ import InputComponent from '../components/InputComponent';
 import React from 'react';
 import '@testing-library/jest-dom';
 
-afterEach(() => {
-  cleanup();
-});
-
 describe('InputComponent Tests', () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   it('When a InputComponent is rendered an input field should exist', () => {
     render(<InputComponent />);
 

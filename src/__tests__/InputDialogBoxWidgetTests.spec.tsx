@@ -5,16 +5,14 @@ import { cleanup, render, screen, within } from '@testing-library/react';
 import { InputDialogBoxWidget } from '../widgets/InputDialogBoxWidget';
 import '@testing-library/jest-dom';
 
-afterEach(() => {
-  cleanup();
-});
-
 describe('InputDialogBoxWidget Tests', () => {
-  beforeEach(() => {
-    render(new InputDialogBoxWidget().render());
+  afterEach(() => {
+    cleanup();
   });
 
   it('When a InputDialogBoxWidget is rendered it has the proper components', () => {
+    render(new InputDialogBoxWidget().render());
+
     const component = screen.getByTestId('input-dialog-box-widget');
     expect(component).not.toBeNull();
 
@@ -26,5 +24,30 @@ describe('InputDialogBoxWidget Tests', () => {
 
     const button = within(dialog).getByTestId('button-component');
     expect(button).not.toBeNull();
+  });
+
+  it('When a InputDialogBoxWidgets OK button is clicked with inputted text it shows a confirmation with the message', () => {
+    window.confirm = jest.fn();
+
+    const dialogWidget = new InputDialogBoxWidget();
+    render(dialogWidget.render());
+
+    const inputBox = screen.getByTestId('dialog-box-input') as HTMLInputElement;
+    inputBox.value = 'Hello';
+    dialogWidget.onClick();
+
+    expect(window.confirm).toHaveBeenCalledWith(
+      'You entered: ' + inputBox.value
+    );
+  });
+
+  it('When a InputDialogBoxWidgets OK button is clicked without inputted text nothing happens', () => {
+    window.confirm = jest.fn();
+
+    const dialogWidget = new InputDialogBoxWidget();
+    render(dialogWidget.render());
+    dialogWidget.onClick();
+
+    expect(window.confirm).not.toBeCalled();
   });
 });

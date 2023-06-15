@@ -6,11 +6,11 @@ import ButtonComponent from '../components/ButtonComponent';
 import React from 'react';
 import '@testing-library/jest-dom';
 
-afterEach(() => {
-  cleanup();
-});
-
 describe('ButtonComponent Tests', () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   it('A ButtonComponent should render a button with the given label', () => {
     render(<ButtonComponent label={'Test'} handleClick={jest.fn()} />);
 
