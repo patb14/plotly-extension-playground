@@ -9,7 +9,7 @@ namespace CommandIDs {
 }
 
 const extension = {
-  id: 'plotly-extension:open-dialog',
+  id: 'plotly-extension',
   autoStart: true,
   requires: [ICommandPalette],
   optional: [ILauncher],
