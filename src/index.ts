@@ -1,57 +1,48 @@
-import {
-  JupyterFrontEnd,
-  JupyterFrontEndPlugin
-} from '@jupyterlab/application';
-
+import { JupyterFrontEnd } from '@jupyterlab/application';
 import { ICommandPalette, MainAreaWidget } from '@jupyterlab/apputils';
+import { ILauncher } from '@jupyterlab/launcher';
+import { reactIcon } from '@jupyterlab/ui-components';
+import { InputDialogBoxWidget } from './widgets/InputDialogBoxWidget';
 
-import { Widget } from '@lumino/widgets';
+namespace CommandIDs {
+  export const open = 'plotly-extension:open-dialog';
+}
 
-/**
- * Initialization data for the plotly-extension extension.
- */
-const plugin: JupyterFrontEndPlugin<void> = {
+const extension = {
   id: 'plotly-extension:open-dialog',
-  description: 'A dialog box with an input field.',
   autoStart: true,
   requires: [ICommandPalette],
-  activate: (app: JupyterFrontEnd, palette: ICommandPalette) => {
-    console.log('JupyterLab extension plotly-extension is activated!');
+  optional: [ILauncher],
+  activate: (
+    app: JupyterFrontEnd,
+    palette: ICommandPalette,
+    launcher: ILauncher
+  ) => {
+    const { commands } = app;
 
-    // Define a widget creator function,
-    // then call it to make a new widget
-    const newWidget = () => {
-      // Create a blank content widget inside of a MainAreaWidget
-      const content = new Widget();
-      const widget = new MainAreaWidget({ content });
-      widget.id = 'open-dialog';
-      widget.title.label = 'Open Dialog';
-      widget.title.closable = true;
-      return widget;
-    };
-    let widget = newWidget();
-
-    // Add an application command
-    const command = 'plotly-extension:open-dialog';
-    app.commands.addCommand(command, {
-      label: 'Dialog Prompt',
+    const command = CommandIDs.open;
+    commands.addCommand(command, {
+      caption: 'Open a Dialog Box',
+      label: 'Open Dialog',
+      icon: reactIcon,
       execute: () => {
-        // Regenerate the widget if disposed
-        if (widget.isDisposed) {
-          widget = newWidget();
-        }
-        if (!widget.isAttached) {
-          // Attach the widget to the main work area if it's not there
-          app.shell.add(widget, 'main');
-        }
-        // Activate the widget
-        app.shell.activateById(widget.id);
+        const content = new InputDialogBoxWidget();
+        const widget = new MainAreaWidget({ content });
+        widget.title.label = 'Open Dialog';
+        app.shell.add(widget, 'main');
       }
     });
 
-    // Add the command to the palette.
-    palette.addItem({ command, category: 'Tutorial' });
+    // Add the command to the launcher
+    if (launcher) {
+      launcher.add({
+        command
+      });
+    }
+
+    //Add the command to the palette
+    palette.addItem({ command, category: 'Other' });
   }
 };
 
-export default plugin;
+export default extension;
